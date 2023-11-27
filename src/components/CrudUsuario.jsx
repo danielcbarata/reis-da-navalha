@@ -4,7 +4,7 @@ export default function CrudUsuario() {
     return (
         <div id="page">
             <div id="header">
-                <p>Reis da Navalha</p>
+                <h1 class="titulo">Reis da Navalha</h1>
             </div>
             <div id="menu">
                 <p>Sobre Nós</p>

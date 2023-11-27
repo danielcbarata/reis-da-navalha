@@ -24,6 +24,24 @@
   color: white;
 }
 
+#header {
+  /*Configuração do layout do título*/
+    color: #ffde59;
+    /*Cor das letras*/
+    -webkit-text-stroke: 2px black;
+    /*Borda no título*/
+    text-shadow: 4px -4px;
+    /*Sombra para impressão 3d*/
+    font-family: 'Ruslan Display', cursive;
+    /*Alteração na fonte*/
+    font-size: 80px;
+    /*Tamanho da letra*/
+    text-align: center;
+    /*Alinhamento do texto no centro da página*/
+}
+
+
+
 .App-link {
   color: #61dafb;
 }
