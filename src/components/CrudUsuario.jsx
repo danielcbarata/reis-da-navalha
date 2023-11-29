@@ -1,6 +1,21 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 
-export default function CrudUsuario() {
+export default function CrudUsuarios() {
+    const [usuarios, setUsuarios] = useState([]);
+    const [id_usuario, setId_Usuario] = useState("");
+    const [nome, setNome] = useState("");
+    const [telefone, setTelefone] = useState("");
+    const [horarios, setHorarios] = useState("");
+
+    const url = "https://agenda-omega-liart.vercel.app/usuarios/";
+
+    useEffect(() => {
+        fetch(url)
+            .then((respFetch) => respFetch.json())
+            .then((respJson) => setUsuarios(respJson))
+            .catch((err) => console.log(err));
+    }, [url]);
+
     return (
         <div id="page">
             <div id="header">
@@ -10,7 +25,14 @@ export default function CrudUsuario() {
                 <p>Sobre Nós</p>
             </div>
             <div id="menu-sobre">
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia, nam omnis. Distinctio velit aliquam amet quae, quod facilis labore blanditiis voluptates? Eligendi excepturi dignissimos pariatur rerum, fugit quasi expedita cum.</p>
+                {usuarios ? usuarios.map((item) => {
+                return (
+                    <div key={item.id_usuario}>
+                        {item.id_usuario} - {item.nome} - {item.telefone} - {item.horarios}
+                    </div>
+                );
+            })
+                : false}
             </div>
             <div id="body">
                 <p>Realizar Agendamento</p>
