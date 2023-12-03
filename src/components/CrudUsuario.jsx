@@ -11,6 +11,7 @@ export default function CrudUsuarios() {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const [showLabel, setShowLabel] = useState(true);
 
     const url = "https://agenda-omega-liart.vercel.app/usuarios/";
 
@@ -26,12 +27,13 @@ export default function CrudUsuarios() {
             <div id="header">
                 <h1 className="titulo">Reis da Navalha</h1>
             </div>
-            <div
-                id="sobre-nos-label"
-                onMouseEnter={() => setShowMenu(true)}
-                onMouseLeave={() => setShowMenu(false)}>
+            {showLabel && (  <div
+                id="sobre-nos"
+                className={`sobre-nos-label ${showLabel ? 'show-label' : ''}`}
+                onMouseEnter={() => setShowLabel(true)}
+                onMouseLeave={() => setShowLabel(false)}>
                 Sobre Nós
-            </div>
+            </div> )}
             <div
                 id="menu"
                 className={`menu-bar ${showMenu ? 'show-menu' : ''}`}
