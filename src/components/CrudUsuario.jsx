@@ -26,6 +26,9 @@ export default function CrudUsuarios() {
             <div id="header">
                 <h1 className="titulo">Reis da Navalha</h1>
             </div>
+            <div className="sobre-nos-label" onMouseEnter={() => setShowMenu(true)} onMouseLeave={() => setShowMenu(false)}>
+                Sobre Nós
+            </div>
             <div
                 id="menu"
                 className={`menu-bar ${showMenu ? 'show-menu' : ''}`}
@@ -49,25 +52,22 @@ export default function CrudUsuarios() {
                 }) : null}
             </div>
             <div id="body">
-                <div>
-                    <Button onClick={handleOpen}>Open modal</Button>
-                    <Modal
-                        open={open}
-                        onClose={handleClose}
-                        aria-labelledby="modal-modal-title"
-                        aria-describedby="modal-modal-description"
-                    >
-                        <Box>
-                            <Typography id="modal-modal-title" variant="h6" component="h2">
-                                Text in a modal
-                            </Typography>
-                            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                                Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-                            </Typography>
-                        </Box>
-                    </Modal>
-                </div>
-                <p>Realizar Agendamento</p>
+                <Button onClick={handleOpen}>Realizar Agendamento</Button>
+                <Modal
+                    open={open}
+                    onClose={handleClose}
+                    aria-labelledby="modal-modal-title"
+                    aria-describedby="modal-modal-description"
+                >
+                    <Box>
+                        <Typography id="modal-modal-title" variant="h6" component="h2">
+                            Text in a modal
+                        </Typography>
+                        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+                        </Typography>
+                    </Box>
+                </Modal>
             </div>
         </div>
     )
