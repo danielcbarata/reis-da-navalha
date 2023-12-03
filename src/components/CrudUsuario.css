@@ -80,7 +80,7 @@ background-size: cover;
   height: 60px; /* Mantém a altura quando o menu está ativo */
 }
 
-.menu-bar.show-menu p {
+.menu-bar.show-menu li {
   visibility: visible; /* Mostra o texto "Sobre Nós" ao passar o mouse */
 }
 
