@@ -64,7 +64,7 @@ export default function CrudUsuarios() {
                     aria-labelledby="modal-modal-title"
                     aria-describedby="modal-modal-description"
                 >
-                    <Box>
+                    <Box className="modal-box">
                         <Typography id="modal-modal-title" variant="h6" component="h2">
                             Text in a modal
                         </Typography>
