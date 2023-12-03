@@ -16,34 +16,38 @@ export default function CrudUsuarios() {
 
     return (
         <div id="page">
-        <div id="header">
-            <h1 className="titulo">Reis da Navalha</h1>
+            <div id="header">
+                <h1 className="titulo">Reis da Navalha</h1>
+            </div>
+            <div
+                id="menu"
+                className={`menu-bar ${showMenu ? 'show-menu' : ''}`}
+                onMouseEnter={() => setShowMenu(true)}
+                onMouseLeave={() => setShowMenu(false)}
+            >
+                <ul>
+                    <li>Endereço: Av. Gov. José de Magalhães Pinto, 917 - Giovanini, Cel. Fabriciano - MG, 35170-097</li>
+                    <li>Telefone de Contato: +55 31 9592-2625</li>
+                    <li>Instagram: @reisdanavalhaoficial</li>
+                </ul>
+            </div>
+            <div id="menu-sobre" className="menu-sobre">
+                {/* Conteúdo do menu suspenso */}
+                {usuarios ? usuarios.map((item) => {
+                    return (
+                        <div key={item.id_usuario}>
+                            {item.id_usuario} - {item.nome} - {item.telefone} - {item.horarios}
+                        </div>
+                    );
+                }) : null}
+            </div>
+            <div id="body">
+                <p>Realizar Agendamento</p>
+            </div>
+            <Modal aria-labelledby="modal-title" aria-describedby="modal-description">
+                <h2 id="modal-title">My Title</h2>
+                <p id="modal-description">My Description</p>
+            </Modal>
         </div>
-        <div 
-            id="menu" 
-            className={`menu-bar ${showMenu ? 'show-menu' : ''}`} 
-            onMouseEnter={() => setShowMenu(true)} 
-            onMouseLeave={() => setShowMenu(false)}
-        >
-            <p>Sobre Nós</p>
-        </div>
-        <div id="menu-sobre" className="menu-sobre">
-            {/* Conteúdo do menu suspenso */}
-            {usuarios ? usuarios.map((item) => {
-                return (
-                    <div key={item.id_usuario}>
-                        {item.id_usuario} - {item.nome} - {item.telefone} - {item.horarios}
-                    </div>
-                );
-            }) : null}
-        </div>
-        <div id="body">
-            <p>Realizar Agendamento</p>
-        </div>
-        <Modal aria-labelledby="modal-title" aria-describedby="modal-description">
-            <h2 id="modal-title">My Title</h2>
-            <p id="modal-description">My Description</p>
-        </Modal>
-    </div>
-)
+    )
 }
