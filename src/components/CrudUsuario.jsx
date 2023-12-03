@@ -27,13 +27,13 @@ export default function CrudUsuarios() {
             <div id="header">
                 <h1 className="titulo">Reis da Navalha</h1>
             </div>
-            {showLabel && (  <div
+            <div
                 id="sobre-nos"
                 className={`sobre-nos-label ${showLabel ? 'show-label' : ''}`}
                 onMouseEnter={() => setShowLabel(true)}
                 onMouseLeave={() => setShowLabel(false)}>
                 Sobre Nós
-            </div> )}
+            </div>
             <div
                 id="menu"
                 className={`menu-bar ${showMenu ? 'show-menu' : ''}`}
