@@ -49,6 +49,9 @@ background-size: cover;
   /*Alinhamento do texto no centro da página*/
 }
 
+#menu{
+  color: white;
+}
 
 .menu-bar {
   position: fixed;
@@ -63,7 +66,7 @@ background-size: cover;
   cursor: pointer;
 }
 
-.menu-bar p {
+.menu-bar li {
   margin: 0;
   color: white;
 }
@@ -81,9 +84,23 @@ background-size: cover;
   visibility: visible; /* Mostra o texto "Sobre Nós" ao passar o mouse */
 }
 
-.menu-bar p {
+.menu-bar li {
   visibility: hidden;
   transition: visibility 0.3s ease; /* Aplica transição para suavizar a exibição do texto */
+}
+
+/* Estilos para o rótulo "Sobre Nós" na parte superior */
+.sobre-nos-label {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-size: 16px;
+  padding: 5px 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .App-link {
