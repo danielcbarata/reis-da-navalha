@@ -53,7 +53,7 @@ export default function CrudUsuarios() {
                 }) : null}
             </div>
             <div id="body">
-                <Button onClick={handleOpen}>Realizar Agendamento</Button>
+                <Button className="agendamento" onClick={handleOpen}>Realizar Agendamento</Button>
                 <Modal
                     open={open}
                     onClose={handleClose}
@@ -61,12 +61,30 @@ export default function CrudUsuarios() {
                     aria-describedby="modal-modal-description"
                 >
                     <Box className="modal-box">
-                        <Typography id="modal-modal-title" variant="h6" component="h2">
-                            Text in a modal
-                        </Typography>
-                        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-                        </Typography>
+                        <Button className="fechar-janela" onClick={handleClose}>X</Button>
+                        <h1 className="titulo">AGENDE SEU HORÁRIO</h1>
+                        <select className="dia_semana" name="dia_semana">
+                            <option value="selecionar">Selecione um dia</option>
+                            <option value="segunda">Segunda-feira</option>
+                            <option value="terca">Terça-feira</option>
+                            <option value="quarta">Quarta-feira</option>
+                            <option value="quinta">Quinta-feira</option>
+                            <option value="sexta">Sexta-feira</option>
+                            <option value="sabado">Sábado</option>
+                        </select>
+                        <div className="div_botao_corte">
+                            <p>Corte</p>
+                            <p>Duração: 1 hora</p>
+                            <p>Preço: R$ 30,00</p>
+                            <button class="botao_corte" type="button" onclick="mostrarHorarios('Corte')">Selecionar Horário</button>
+                        </div>
+                        <div className="div_botao_descolorir">
+                            <p>Descolorir</p>
+                            <p>Duração: 1 hora</p>
+                            <p>Preço: R$ 40,00</p>
+                            <button class="botao_descolorir" type="button" onclick="mostrarHorarios('Descolorir')">Selecionar
+                                Horário</button>
+                        </div>
                     </Box>
                 </Modal>
             </div>
