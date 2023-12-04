@@ -1,17 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import TextField from '@mui/material/TextField';
 
 
 export default function CrudUsuarios() {
     const [usuarios, setUsuarios] = useState([]);
+    const [id_usuario, setId_Usuario] = useState("");
+    const [nome, setNome] = useState("");
+    const [telefone, setTelefone] = useState("");
+    const [horarios, setHorarios] = useState("");
     const [showMenu, setShowMenu] = useState(false);
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-    const [showLabel, setShowLabel] = useState(true);
+    const [diaSemana, setDiaSemana] = React.useState('');
 
     const url = "https://agenda-omega-liart.vercel.app/usuarios/";
 
@@ -21,6 +29,10 @@ export default function CrudUsuarios() {
             .then((respJson) => setUsuarios(respJson))
             .catch((err) => console.log(err));
     }, [url]);
+
+    const handleChange = (event) => {
+        setDiaSemana(event.target.value);
+    };
 
     return (
         <div id="page">
@@ -53,7 +65,9 @@ export default function CrudUsuarios() {
                 }) : null}
             </div>
             <div id="body">
-                <Button className="agendamento" onClick={handleOpen}>Realizar Agendamento</Button>
+                <div className="agendamento">
+                    <Button className="botao_agendamento" onClick={handleOpen}>Realizar Agendamento</Button>
+                </div>
                 <Modal
                     open={open}
                     onClose={handleClose}
@@ -63,15 +77,23 @@ export default function CrudUsuarios() {
                     <Box className="modal-box">
                         <Button className="fechar-janela" onClick={handleClose}>X</Button>
                         <h1 className="titulo">AGENDE SEU HORÁRIO</h1>
-                        <select className="dia_semana" name="dia_semana">
-                            <option value="selecionar">Selecione um dia</option>
-                            <option value="segunda">Segunda-feira</option>
-                            <option value="terca">Terça-feira</option>
-                            <option value="quarta">Quarta-feira</option>
-                            <option value="quinta">Quinta-feira</option>
-                            <option value="sexta">Sexta-feira</option>
-                            <option value="sabado">Sábado</option>
-                        </select>
+                        <FormControl fullWidth>
+                            <InputLabel id="demo-simple-select-label">Selecione um dia</InputLabel>
+                            <Select
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                value={diaSemana}
+                                label="Dia da Semana"
+                                onChange={handleChange}
+                            >
+                                <MenuItem value={"segunda"}>Segunda</MenuItem>
+                                <MenuItem value={"terca"}>Terca</MenuItem>
+                                <MenuItem value={"quarta"}>Quarta</MenuItem>
+                                <MenuItem value={"quinta"}>Quinta</MenuItem>
+                                <MenuItem value={"sexta"}>Sexta</MenuItem>
+                                <MenuItem value={"sabado"}>Sábado</MenuItem>
+                            </Select>
+                        </FormControl>
                         <div className="div_botao_corte">
                             <p>Corte</p>
                             <p>Duração: 1 hora</p>
@@ -84,6 +106,11 @@ export default function CrudUsuarios() {
                             <p>Preço: R$ 40,00</p>
                             <button class="botao_descolorir" type="button" onclick="mostrarHorarios('Descolorir')">Selecionar
                                 Horário</button>
+                        </div>
+                        <div className="banco-de-dados">
+                            <TextField className="nome" label="Nome" variant="filled" />
+                            <TextField className="telefone" label="(DDD) Telefone" variant="filled" />
+                            <Button className="agendar" onClick={() => { }}>Agendar</Button>
                         </div>
                     </Box>
                 </Modal>
