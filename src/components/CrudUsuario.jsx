@@ -53,7 +53,7 @@ export default function CrudUsuarios() {
             >
                 <ul>
                     <li><a className='endereco' href="https://www.google.com/maps/place/Barbearia+Reis+da+Navalha/@-19.5144816,-42.6319578,17z/data=!3m1!4b1!4m6!3m5!1s0xa55790d47c44d5:0x4f4794979a609191!8m2!3d-19.5144816!4d-42.6293829!16s%2Fg%2F11jvk3v1f8?entry=ttu"><PinDropIcon/>ENDEREÇO</a></li>
-                    <li><WhatsAppIcon/> Telefone de Contato: +55 31 9592-2625</li>
+                    <li><WhatsAppIcon/>+55 31 9592-2625</li>
                     <li><a className='instagram' href="https://www.instagram.com/reisdanavalhaoficial/"><InstagramIcon/>INSTAGRAM</a></li>
                 </ul>
             </div>
