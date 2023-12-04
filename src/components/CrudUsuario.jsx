@@ -91,11 +91,11 @@ export default function CrudUsuarios() {
                                 onChange={handleChange}
                             >
                                 <MenuItem id="menu-item" value={"segunda"}>Segunda {currentDay}/{currentMonth+1}</MenuItem>
-                                <MenuItem value={"terca"}>Terça {currentDay+1}/{currentMonth+1}</MenuItem>
-                                <MenuItem value={"quarta"}>Quarta {currentDay+2}/{currentMonth+1}</MenuItem>
-                                <MenuItem value={"quinta"}>Quinta {currentDay+3}/{currentMonth+1}</MenuItem>
-                                <MenuItem value={"sexta"}>Sexta {currentDay+4}/{currentMonth+1}</MenuItem>
-                                <MenuItem value={"sabado"}>Sábado {currentDay+5}/{currentMonth+1}</MenuItem>
+                                <MenuItem id="menu-item" value={"terca"}>Terça {currentDay+1}/{currentMonth+1}</MenuItem>
+                                <MenuItem id="menu-item" value={"quarta"}>Quarta {currentDay+2}/{currentMonth+1}</MenuItem>
+                                <MenuItem id="menu-item" value={"quinta"}>Quinta {currentDay+3}/{currentMonth+1}</MenuItem>
+                                <MenuItem id="menu-item" value={"sexta"}>Sexta {currentDay+4}/{currentMonth+1}</MenuItem>
+                                <MenuItem id="menu-item" value={"sabado"}>Sábado {currentDay+5}/{currentMonth+1}</MenuItem>
                             </Select>
                         </FormControl>
                         <div className='botoes-serviços'>
