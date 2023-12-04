@@ -211,6 +211,27 @@ Button.botao_corte:hover, Button.botao_descolorir:hover{
   color: black;
 }
 
+#selecionar-dia, #selecionar_dia{
+  color: #ffde59;
+  font-family: "Ruslan Display", cursive; 
+  font-size: 18px;
+  width: 190px;
+  background-color: black;
+}
+
+#menu-item{
+  color: #ffde59;
+  font-family: "Ruslan Display", cursive; 
+  font-size: 18px;
+  text-align: right;
+  background-color: black;
+}
+
+
+
+
+
+
 .App {
   text-align: center;
 }
