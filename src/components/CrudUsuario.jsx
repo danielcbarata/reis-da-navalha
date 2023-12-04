@@ -27,12 +27,8 @@ export default function CrudUsuarios() {
             <div id="header">
                 <h1 className="titulo">Reis da Navalha</h1>
             </div>
-            <div
-                id="sobre-nos"
-                className={`sobre-nos-label ${showLabel ? 'show-label' : ''}`}
-                onMouseEnter={() => setShowLabel(true)}
-                onMouseLeave={() => setShowLabel(false)}>
-                Sobre Nós
+            <div id="hide-sobre-nos">
+                <p>Sobre Nós</p>
             </div>
             <div
                 id="menu"
