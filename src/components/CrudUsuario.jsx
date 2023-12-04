@@ -78,7 +78,7 @@ export default function CrudUsuarios() {
                 >
                     <Box className="modal-box">
                         <Button variant="contained" className="fechar_janela" onClick={handleClose}>X</Button>
-                        <h1 className="titulo">AGENDE SEU HORÁRIO</h1>
+                        <h1 className="marcar-horario">AGENDE SEU HORÁRIO</h1>
                         <FormControl fullWidth>
                             <InputLabel id="demo-simple-select-label">Selecione um dia</InputLabel>
                             <Select
