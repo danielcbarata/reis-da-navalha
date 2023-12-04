@@ -120,14 +120,19 @@ background-size: cover;
 }
 
 Button.fechar_janela{
-  color: black;
-  background-color: #ffde59;
+  color: #ffde59;
+  background-color: rgba(0, 0, 0, 0.7);
   font-size: 18px;
   position: absolute;
   top: 3%;
   left: 95%;
   transform: translate(-50%, -50%);
   font-family: "Ruslan Display", cursive; 
+}
+
+Button.fechar_janela:hover{
+  background-color: #f8d23c;
+  color: black;
 }
 
 Button.botao_agendamento{
@@ -147,9 +152,9 @@ Button.botao_agendamento:hover{
 }
 
 Button.agendar{
-  color: black;
-  background-color: #ffde59;
+  color: #ffde59;
   position: absolute;
+  background: transparent;
   left: 50%;
   top: 85%;
   transform: translate(-50%, -50%);
@@ -157,14 +162,49 @@ Button.agendar{
   font-size: 25px;
 }
 
-.modal-box{
+Button.agendar:hover{
+  background-color: #f8d23c;
   color: black;
-  background-color: #ffde59;
-  text-align: center;
+}
+
+.modal-box{
+  padding: 0 15px;
+  color: #ffde59;
+  background-color: rgba(0, 0, 0, 0.7);
   position: absolute;
   transform: translate(-50%, -50%);
   font-family: "Ruslan Display", cursive; 
   font-size: 20px;
+}
+
+.marcar-horario{
+  text-align: center;
+}
+
+.botoes-serviços {
+  display: flex;
+  justify-content: space-between; /* Isso vai espaçar os elementos igualmente */
+  margin-top: 20px; /* Espaçamento superior para separar os botões do restante do conteúdo */
+}
+
+/* Estilo para cada botão */
+.div_botao_corte,
+.div_botao_descolorir {
+  width: 45%; /* Defina a largura desejada para os botões */
+  padding: 10px;
+  border: 3px; /* Adicione uma borda para separar visualmente os botões */
+  box-sizing: border-box;
+  text-align: center; /* Centraliza o texto dentro do contêiner do botão */
+}
+
+.div_botao_corte:hover,
+.div_botao_descolorir:hover{
+  width: 45%; /* Defina a largura desejada para os botões */
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 3px solid rgba(255, 255, 255, 0.7); /* Adicione uma borda para separar visualmente os botões */
+  box-sizing: border-box;
+  text-align: center; /* Centraliza o texto dentro do contêiner do botão */
 }
 
 .App {
