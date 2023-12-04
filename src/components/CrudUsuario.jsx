@@ -22,6 +22,8 @@ export default function CrudUsuarios() {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const [diaSemana, setDiaSemana] = React.useState('');
+    const currentDay = new Date().getDate();
+    const currentMonth = new Date().getMonth();
 
     const url = "https://agenda-omega-liart.vercel.app/usuarios/";
 
@@ -79,17 +81,17 @@ export default function CrudUsuarios() {
                     <Box className="modal-box">
                         <Button variant="contained" className="fechar_janela" onClick={handleClose}>X</Button>
                         <h1 className="marcar-horario">AGENDE SEU HORÁRIO</h1>
-                        <FormControl fullWidth>
-                            <InputLabel id="demo-simple-select-label">Selecione um dia</InputLabel>
+                        <FormControl>
+                            <InputLabel id="selecionar-dia">Selecione um dia</InputLabel>
                             <Select
-                                labelId="demo-simple-select-label"
-                                id="demo-simple-select"
+                                labelId="selecionar-dia"
+                                id="selecionar-dia"
                                 value={diaSemana}
                                 label="Dia da Semana"
                                 onChange={handleChange}
                             >
-                                <MenuItem value={"segunda"}>Segunda</MenuItem>
-                                <MenuItem value={"terca"}>Terca</MenuItem>
+                                <MenuItem value={"segunda"}>Segunda {currentDay}/{currentMonth+1}</MenuItem>
+                                <MenuItem value={"terca"}>{currentDay + 1}</MenuItem>
                                 <MenuItem value={"quarta"}>Quarta</MenuItem>
                                 <MenuItem value={"quinta"}>Quinta</MenuItem>
                                 <MenuItem value={"sexta"}>Sexta</MenuItem>
