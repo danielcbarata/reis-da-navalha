@@ -2,7 +2,7 @@
 
 body {
 /*Configurações gerais que vão englobar todas as classes*/
-background-size: cover;
+  background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
   margin: 0;
@@ -140,7 +140,7 @@ Button.botao_agendamento{
   color: black;
   background-color: #ffde59;
   position: absolute;
-  top: 50%;
+  top: 70%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-family: "Ruslan Display", cursive; 
