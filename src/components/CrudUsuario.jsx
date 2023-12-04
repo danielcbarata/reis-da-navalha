@@ -51,9 +51,9 @@ export default function CrudUsuarios() {
                 onMouseLeave={() => setShowMenu(false)}
             >
                 <ul>
-                    <li><a className='endereco' href="https://www.google.com/maps/place/Barbearia+Reis+da+Navalha/@-19.5144816,-42.6319578,17z/data=!3m1!4b1!4m6!3m5!1s0xa55790d47c44d5:0x4f4794979a609191!8m2!3d-19.5144816!4d-42.6293829!16s%2Fg%2F11jvk3v1f8?entry=ttu"><PinDropIcon/>ENDEREÇO</a></li>
-                    <li><a className='whatsapp' href='https://api.whatsapp.com/send/?phone=553195922625&text&type=phone_number&app_absent=0'><WhatsAppIcon/>WHATSAPP</a></li>
-                    <li><a className='instagram' href="https://www.instagram.com/reisdanavalha_/"><InstagramIcon/>INSTAGRAM</a></li>
+                    <li><a className='endereco' href="https://www.google.com/maps/place/Barbearia+Reis+da+Navalha/@-19.5144816,-42.6319578,17z/data=!3m1!4b1!4m6!3m5!1s0xa55790d47c44d5:0x4f4794979a609191!8m2!3d-19.5144816!4d-42.6293829!16s%2Fg%2F11jvk3v1f8?entry=ttu"><PinDropIcon />ENDEREÇO</a></li>
+                    <li><a className='whatsapp' href='https://api.whatsapp.com/send/?phone=553195922625&text&type=phone_number&app_absent=0'><WhatsAppIcon />WHATSAPP</a></li>
+                    <li><a className='instagram' href="https://www.instagram.com/reisdanavalha_/"><InstagramIcon />INSTAGRAM</a></li>
                 </ul>
             </div>
             <div id="menu-sobre" className="menu-sobre">
@@ -66,7 +66,7 @@ export default function CrudUsuarios() {
                     );
                 }) : null}
             </div>
-            <div id="body">                
+            <div id="body">
                 <div className="agendamento">
                     <Button variant="contained" className="botao_agendamento" onClick={handleOpen}>Realizar Agendamento</Button>
                 </div>
@@ -96,23 +96,24 @@ export default function CrudUsuarios() {
                                 <MenuItem value={"sabado"}>Sábado</MenuItem>
                             </Select>
                         </FormControl>
-                        <div className="div_botao_corte">
-                            <p>Corte</p>
-                            <p>Duração: 1 hora</p>
-                            <p>Preço: R$ 30,00</p>
-                            <button class="botao_corte" type="button" onclick="mostrarHorarios('Corte')">Selecionar Horário</button>
-                        </div>
-                        <div className="div_botao_descolorir">
-                            <p>Descolorir</p>
-                            <p>Duração: 1 hora</p>
-                            <p>Preço: R$ 40,00</p>
-                            <button class="botao_descolorir" type="button" onclick="mostrarHorarios('Descolorir')">Selecionar
-                                Horário</button>
+                        <div className='botoes-serviços'>
+                            <div className="div_botao_corte">
+                                <p>Corte</p>
+                                <p>Duração: 1 hora</p>
+                                <p>Preço: R$ 30,00</p>
+                                <Button variant="contained" className="botao_corte" onClick={() => { }}>Selecionar Horário</Button>
+                            </div>
+                            <div className="div_botao_descolorir">
+                                <p>Descolorir</p>
+                                <p>Duração: 1 hora</p>
+                                <p>Preço: R$ 40,00</p>
+                                <Button variant="contained" className="botao_descolorir" onClick={() => { }}>Selecionar Horário</Button>
+                            </div>
                         </div>
                         <div className="banco-de-dados">
                             <TextField fullWidth className="nome" label="Nome" variant="filled" />
                             <TextField className="telefone" label="(DDD) Telefone" variant="filled" />
-                            <br /><Button className="agendar" onClick={() => { }}>Agendar</Button>
+                            <br /><Button variant="contained" className="agendar" onClick={() => { }}>Agendar</Button>
                         </div>
                     </Box>
                 </Modal>
