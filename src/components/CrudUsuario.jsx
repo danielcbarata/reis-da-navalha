@@ -66,7 +66,7 @@ export default function CrudUsuarios() {
             </div>
             <div id="body">
                 <div className="agendamento">
-                    <Button className="botao_agendamento" onClick={handleOpen}>Realizar Agendamento</Button>
+                    <Button variant="contained" className="botao_agendamento" onClick={handleOpen}>Realizar Agendamento</Button>
                 </div>
                 <Modal
                     open={open}
@@ -75,7 +75,7 @@ export default function CrudUsuarios() {
                     aria-describedby="modal-modal-description"
                 >
                     <Box className="modal-box">
-                        <Button className="fechar-janela" onClick={handleClose}>X</Button>
+                        <Button color="secondary" variant="contained" className="fechar-janela" onClick={handleClose}>X</Button>
                         <h1 className="titulo">AGENDE SEU HORÁRIO</h1>
                         <FormControl fullWidth>
                             <InputLabel id="demo-simple-select-label">Selecione um dia</InputLabel>
@@ -110,7 +110,7 @@ export default function CrudUsuarios() {
                         <div className="banco-de-dados">
                             <TextField fullWidth className="nome" label="Nome" variant="filled" />
                             <TextField className="telefone" label="(DDD) Telefone" variant="filled" />
-                            <br/><Button center className="agendar" onClick={() => { }}>Agendar</Button>
+                            <br/><Button variant="contained" className="agendar" onClick={() => { }}>Agendar</Button>
                         </div>
                     </Box>
                 </Modal>
