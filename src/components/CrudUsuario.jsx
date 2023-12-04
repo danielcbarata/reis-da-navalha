@@ -7,7 +7,10 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
-
+import Icon from '@mui/material/Icon';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import PinDropIcon from '@mui/icons-material/PinDrop';
 
 export default function CrudUsuarios() {
     const [usuarios, setUsuarios] = useState([]);
@@ -49,9 +52,9 @@ export default function CrudUsuarios() {
                 onMouseLeave={() => setShowMenu(false)}
             >
                 <ul>
-                    <li>Endereço: Av. Gov. José de Magalhães Pinto, 917 - Giovanini, Cel. Fabriciano - MG, 35170-097</li>
-                    <li>Telefone de Contato: +55 31 9592-2625</li>
-                    <li>Instagram: @reisdanavalhaoficial</li>
+                    <li><a className='endereco' href="https://www.google.com/maps/place/Barbearia+Reis+da+Navalha/@-19.5144816,-42.6319578,17z/data=!3m1!4b1!4m6!3m5!1s0xa55790d47c44d5:0x4f4794979a609191!8m2!3d-19.5144816!4d-42.6293829!16s%2Fg%2F11jvk3v1f8?entry=ttu"><PinDropIcon/>ENDEREÇO</a></li>
+                    <li><WhatsAppIcon/> Telefone de Contato: +55 31 9592-2625</li>
+                    <li><a className='instagram' href="https://www.instagram.com/reisdanavalhaoficial/"><InstagramIcon/>INSTAGRAM</a></li>
                 </ul>
             </div>
             <div id="menu-sobre" className="menu-sobre">
@@ -64,7 +67,7 @@ export default function CrudUsuarios() {
                     );
                 }) : null}
             </div>
-            <div id="body">
+            <div id="body">                
                 <div className="agendamento">
                     <Button variant="contained" className="botao_agendamento" onClick={handleOpen}>Realizar Agendamento</Button>
                 </div>
@@ -110,7 +113,7 @@ export default function CrudUsuarios() {
                         <div className="banco-de-dados">
                             <TextField fullWidth className="nome" label="Nome" variant="filled" />
                             <TextField className="telefone" label="(DDD) Telefone" variant="filled" />
-                            <br/><Button className="agendar" onClick={() => { }}>Agendar</Button>
+                            <br /><Button className="agendar" onClick={() => { }}>Agendar</Button>
                         </div>
                     </Box>
                 </Modal>
