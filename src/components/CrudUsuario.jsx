@@ -108,9 +108,9 @@ export default function CrudUsuarios() {
                                 Horário</button>
                         </div>
                         <div className="banco-de-dados">
-                            <TextField className="nome" label="Nome" variant="filled" />
+                            <TextField fullWidth className="nome" label="Nome" variant="filled" />
                             <TextField className="telefone" label="(DDD) Telefone" variant="filled" />
-                            <Button className="agendar" onClick={() => { }}>Agendar</Button>
+                            <br/><Button center className="agendar" onClick={() => { }}>Agendar</Button>
                         </div>
                     </Box>
                 </Modal>
