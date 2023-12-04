@@ -83,19 +83,19 @@ export default function CrudUsuarios() {
                         <h1 className="marcar-horario">AGENDE SEU HORÁRIO</h1>
                         <FormControl>
                             <InputLabel id="selecionar-dia">Selecione um dia</InputLabel>
-                            <Select
+                            <Select 
                                 labelId="selecionar-dia"
                                 id="selecionar_dia"
                                 value={diaSemana}
                                 label="Dia da Semana"
                                 onChange={handleChange}
                             >
-                                <MenuItem id="menu-item" value={"segunda"}>Segunda {currentDay}/{currentMonth+1}</MenuItem>
-                                <MenuItem id="menu-item" value={"terca"}>Terça {currentDay+1}/{currentMonth+1}</MenuItem>
-                                <MenuItem id="menu-item" value={"quarta"}>Quarta {currentDay+2}/{currentMonth+1}</MenuItem>
-                                <MenuItem id="menu-item" value={"quinta"}>Quinta {currentDay+3}/{currentMonth+1}</MenuItem>
-                                <MenuItem id="menu-item" value={"sexta"}>Sexta {currentDay+4}/{currentMonth+1}</MenuItem>
-                                <MenuItem id="menu-item" value={"sabado"}>Sábado {currentDay+5}/{currentMonth+1}</MenuItem>
+                                <MenuItem id="menu-item" value={"segunda"}>Segunda {currentDay}/{currentMonth + 1}</MenuItem>
+                                <MenuItem id="menu-item" value={"terca"}>Terça {currentDay + 1}/{currentMonth + 1}</MenuItem>
+                                <MenuItem id="menu-item" value={"quarta"}>Quarta {currentDay + 2}/{currentMonth + 1}</MenuItem>
+                                <MenuItem id="menu-item" value={"quinta"}>Quinta {currentDay + 3}/{currentMonth + 1}</MenuItem>
+                                <MenuItem id="menu-item" value={"sexta"}>Sexta {currentDay + 4}/{currentMonth + 1}</MenuItem>
+                                <MenuItem id="menu-item" value={"sabado"}>Sábado {currentDay + 5}/{currentMonth + 1}</MenuItem>
                             </Select>
                         </FormControl>
                         <div className='botoes-serviços'>
