@@ -85,7 +85,7 @@ export default function CrudUsuarios() {
                             <InputLabel id="selecionar-dia">Selecione um dia</InputLabel>
                             <Select
                                 labelId="selecionar-dia"
-                                id="selecionar-dia"
+                                id="selecionar_dia"
                                 value={diaSemana}
                                 label="Dia da Semana"
                                 onChange={handleChange}
