@@ -13,16 +13,18 @@ background-size: cover;
 }
 
 .modal-box{
-  color:white;
   position: absolute;
   top: 50%;
   left: 50%;
   height: 800px;
   width: 800px;
   border: 2px solid #000;
-  box-shadow: 24px;
-  background-color: rgb(22, 22, 22);
+  padding: 0 15px;
+  background-color: rgba(0, 0, 0, 0.95);
+  position: absolute;
   transform: translate(-50%, -50%);
+  font-family: "Ruslan Display", cursive; 
+  font-size: 20px;
 }
 
 .App-logo {
@@ -101,7 +103,6 @@ background-size: cover;
   transition: visibility 0.3s ease; /* Aplica transição para suavizar a exibição do texto */
 }
 
-/* Estilos para o rótulo "Sobre Nós" na parte superior */
 #hide-sobre-nos {
   position: fixed;
   top: 10px;
@@ -167,27 +168,18 @@ Button.agendar:hover{
   color: black;
 }
 
-.modal-box{
-  padding: 0 15px;
-  color: #ffde59;
-  background-color: rgba(0, 0, 0, 0.7);
-  position: absolute;
-  transform: translate(-50%, -50%);
-  font-family: "Ruslan Display", cursive; 
-  font-size: 20px;
-}
-
 .marcar-horario{
   text-align: center;
+  color: #ffde59;
 }
 
 .botoes-serviços {
+  color: white;
   display: flex;
   justify-content: space-between; /* Isso vai espaçar os elementos igualmente */
   margin-top: 20px; /* Espaçamento superior para separar os botões do restante do conteúdo */
 }
 
-/* Estilo para cada botão */
 .div_botao_corte,
 .div_botao_descolorir {
   width: 45%; /* Defina a largura desejada para os botões */
@@ -205,6 +197,18 @@ Button.agendar:hover{
   border: 3px solid rgba(255, 255, 255, 0.7); /* Adicione uma borda para separar visualmente os botões */
   box-sizing: border-box;
   text-align: center; /* Centraliza o texto dentro do contêiner do botão */
+}
+
+Button.botao_corte, Button.botao_descolorir{
+  color: #ffde59;
+  background: transparent;
+  font-family: "Ruslan Display", cursive; 
+  font-size: 18px;
+}
+
+Button.botao_corte:hover, Button.botao_descolorir:hover{
+  background-color: #f8d23c;
+  color: black;
 }
 
 .App {
