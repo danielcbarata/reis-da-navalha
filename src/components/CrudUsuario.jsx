@@ -11,7 +11,36 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import PinDropIcon from '@mui/icons-material/PinDrop';
 import axios from "axios";
+import { styled } from '@mui/material/styles';
+import NativeSelect from '@mui/material/NativeSelect';
+import InputBase from '@mui/material/InputBase';
+import { getNextValidDate } from '../helpers/date';
 
+const ReiInput = styled(InputBase)(({ theme }) => ({
+    'label + &': {
+        marginTop: theme.spacing(1),
+        marginLeft: theme.spacing(-1),
+        color: '#ffde59',
+    },
+    '& .MuiInputBase-input': {
+      borderRadius: 4,
+      position: 'relative',
+      backgroundColor: 'transparent',
+      border: '1px solid #ced4da',
+      color: '#ffde59',
+      borderColor: '#ffde59',
+      fontSize: 16,
+      padding: '10px 26px 10px 12px',
+      fontFamily: [
+        '"Ruslan Display" , cursive',
+      ].join(','),
+      '&:focus': {
+        borderRadius: 4,
+        borderColor: '#ffde59',
+        boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
+      },
+    },
+}));
 
 export default function CrudUsuarios() {
     const [usuarios, setUsuarios] = useState([]);
@@ -23,7 +52,6 @@ export default function CrudUsuarios() {
     const [open, setOpen] = React.useState(false);
     const [diaSemana, setDiaSemana] = React.useState('');
     const [servico, setServico] = React.useState('');
-    const currentDay = new Date().toDateString();
     const [operacao, setOperacao] = useState("");
 
     const handleChangeDia = (event) => {
@@ -71,11 +99,12 @@ export default function CrudUsuarios() {
     function gravarDados() {
         if (nome !== "" && telefone !== "" && horarios !== "") {
             if (operacao === "criarRegistro") {
+                const nextValidDate = getNextValidDate(diaSemana, +horarios);
                 axios
                     .post(url, {
                         nome: nome,
                         telefone: telefone,
-                        horarios: horarios,
+                        horarios: nextValidDate,
                     })
                     .then((response) => {
                         novoUsuario(response);
@@ -89,39 +118,7 @@ export default function CrudUsuarios() {
         }
     }
 
-    const BootstrapInput = styled(InputBase)(({ theme }) => ({
-        'label + &': {
-          marginTop: theme.spacing(3),
-        },
-        '& .MuiInputBase-input': {
-          borderRadius: 4,
-          position: 'relative',
-          backgroundColor: theme.palette.background.paper,
-          border: '1px solid #ced4da',
-          fontSize: 16,
-          padding: '10px 26px 10px 12px',
-          transition: theme.transitions.create(['border-color', 'box-shadow']),
-          // Use the system font instead of the default Roboto font.
-          fontFamily: [
-            '-apple-system',
-            'BlinkMacSystemFont',
-            '"Segoe UI"',
-            'Roboto',
-            '"Helvetica Neue"',
-            'Arial',
-            'sans-serif',
-            '"Apple Color Emoji"',
-            '"Segoe UI Emoji"',
-            '"Segoe UI Symbol"',
-          ].join(','),
-          '&:focus': {
-            borderRadius: 4,
-            borderColor: '#80bdff',
-            boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
-          },
-        },
-      }));
-
+   
     return (
         <div id="page">
             <div id="header">
@@ -163,13 +160,14 @@ export default function CrudUsuarios() {
                                 value={diaSemana}
                                 label="Dia da Semana"
                                 onChange={handleChangeDia}
+                                input={<ReiInput />}
                             >
-                                <MenuItem id="menu-item" value={"segunda"}>Segunda {currentDay}</MenuItem>
-                                <MenuItem id="menu-item" value={"terca"}>Terça {currentDay}</MenuItem>
-                                <MenuItem id="menu-item" value={"quarta"}>Quarta {currentDay}</MenuItem>
-                                <MenuItem id="menu-item" value={"quinta"}>Quinta {currentDay}</MenuItem>
-                                <MenuItem id="menu-item" value={"sexta"}>Sexta {currentDay}</MenuItem>
-                                <MenuItem id="menu-item" value={"sabado"}>Sábado {currentDay}</MenuItem>
+                                <MenuItem id="menu-item" value={"segunda"}>Segunda {getNextValidDate("segunda", new Date().getHours()).toDateString()}</MenuItem>
+                                <MenuItem id="menu-item" value={"terca"}>Terça {getNextValidDate("terca", new Date().getHours()).toDateString()}</MenuItem>
+                                <MenuItem id="menu-item" value={"quarta"}>Quarta {getNextValidDate("quarta", new Date().getHours()).toDateString()}</MenuItem>
+                                <MenuItem id="menu-item" value={"quinta"}>Quinta {getNextValidDate("quinta", new Date().getHours()).toDateString()}</MenuItem>
+                                <MenuItem id="menu-item" value={"sexta"}>Sexta {getNextValidDate("sexta", new Date().getHours()).toDateString()}</MenuItem>
+                                <MenuItem id="menu-item" value={"sabado"}>Sábado {getNextValidDate("sabado", new Date().getHours()).toDateString()}</MenuItem>
                             </Select>
                         </FormControl>
                         <FormControl>
@@ -180,6 +178,7 @@ export default function CrudUsuarios() {
                                 value={servico}
                                 label="Serviços"
                                 onChange={handleChangeServico}
+                                input={<ReiInput />}
                             >
                                 <MenuItem id="menu-item" value={"corte"}>Corte R$ 30,00</MenuItem>
                                 <MenuItem id="menu-item" value={"corte_barba"}>Corte + Barba R$ 35,00</MenuItem>
@@ -195,6 +194,7 @@ export default function CrudUsuarios() {
                                 value={horarios}
                                 label="Horários"
                                 onChange={handleChangeHorario}
+                                input={<ReiInput />}
                             >
                                 <MenuItem id="menu-item" value={"10"}>10:00h</MenuItem>
                                 <MenuItem id="menu-item" value={"11"}>11:00h</MenuItem>
@@ -206,8 +206,14 @@ export default function CrudUsuarios() {
                             </Select>
                         </FormControl>
                         <div className="banco-de-dados">
-                            <input label="nome" className="nome" value={nome} onChange={(e) => { setNome(e.target.value); }} />
-                            <input label="DDD telefone" className="telefone" value={telefone} onChange={(e) => { setTelefone(e.target.value); }} />
+                            <FormControl sx={{ m: 1 }} variant="standard">
+                                <InputLabel id="name-label" htmlFor="name-input">Nome</InputLabel>
+                                <ReiInput id="name-input" className="nome" value={nome} onChange={(e) => { setNome(e.target.value); }} />
+                            </FormControl>
+                            <FormControl sx={{ m: 1 }} variant="standard">
+                                <InputLabel id="telefone-label" htmlFor="telefone-input">DDD Telefone</InputLabel>
+                                <ReiInput id="telefone-input" className="telefone" value={telefone} onChange={(e) => { setTelefone(e.target.value); }} />
+                            </FormControl>
                             <br /><Button variant="contained" className="agendar" onClick={gravarDados}>Agendar</Button>
                         </div>
                     </Box>

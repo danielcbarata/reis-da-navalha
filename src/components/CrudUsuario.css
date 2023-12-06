@@ -15,7 +15,6 @@ body {
 .modal-box{
   position: absolute;
   display: grid;
-  gap: 10px;
   justify-content: center;
   top: 50%;
   left: 50%;
@@ -159,7 +158,7 @@ Button.agendar{
   position: absolute;
   background: transparent;
   left: 50%;
-  top: 85%;
+  top: 95%;
   transform: translate(-50%, -50%);
   font-family: "Ruslan Display", cursive; 
   font-size: 25px;
@@ -175,11 +174,20 @@ Button.agendar:hover{
   color: #ffde59;
 }
 
-#selecionar-dia, #servicos, #horarios{
+#selecionar-dia, #servicos, #horarios {
   color: #ffde59;
-  font-family: "Ruslan Display", cursive; 
+  font-family: "Ruslan Display", cursive;
   font-size: 18px;
-  width: 275px;
+}
+
+#selecionar_dia, #servicosid, #horariosid, #name-input, #telefone-input{
+  color: white;
+}
+
+#name-label, #telefone-label {
+  font-family: "Ruslan Display", cursive;
+  color: #ffde59;
+  font-size: 18px;
   background-color: black;
 }
 
@@ -188,14 +196,6 @@ Button.agendar:hover{
   font-family: "Ruslan Display", cursive; 
   font-size: 18px;
   text-align: right;
-  background-color: black;
-}
-
-#selecionar_dia, #servicosid, #horariosid{
-  color: white;
-  font-family: "Ruslan Display", cursive; 
-  font-size: 18px;
-  width: 275px;
   background-color: black;
 }
 
@@ -212,6 +212,13 @@ a.instagram:visited {
   color: white; /*Cor do site ja visitado*/
   text-decoration: none;
 }
+
+.banco-de-dados{
+  flex-direction: row;
+  gap: 10px;
+}
+
+
 
 .App {
   text-align: center;
