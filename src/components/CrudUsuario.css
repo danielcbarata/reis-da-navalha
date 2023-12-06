@@ -10,7 +10,6 @@ body {
   font-size: 16px;
   letter-spacing: 1px;
   background-image: url("../backgroung.jpg");
-  width: 100%;
 }
 
 .modal-box{
@@ -84,7 +83,7 @@ body {
 .menu-bar li {
   margin: 0;
   font-size: 20px;
-  color: #ffde59;
+  color: white;
 }
 
 .menu-bar:hover {
@@ -93,7 +92,7 @@ body {
 }
 
 .menu-bar.show-menu {
-  height: 100px; /* Mantém a altura quando o menu está ativo */
+  height: 120px; /* Mantém a altura quando o menu está ativo */
 }
 
 .menu-bar.show-menu li {
