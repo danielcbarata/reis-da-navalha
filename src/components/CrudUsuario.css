@@ -173,45 +173,7 @@ Button.agendar:hover{
   color: #ffde59;
 }
 
-.botoes-serviços {
-  color: white;
-  display: flex;
-  justify-content: space-between; /* Isso vai espaçar os elementos igualmente */
-  margin-top: 20px; /* Espaçamento superior para separar os botões do restante do conteúdo */
-}
-
-.div_botao_corte,
-.div_botao_descolorir {
-  width: 45%; /* Defina a largura desejada para os botões */
-  padding: 10px;
-  border: 3px; /* Adicione uma borda para separar visualmente os botões */
-  box-sizing: border-box;
-  text-align: center; /* Centraliza o texto dentro do contêiner do botão */
-}
-
-.div_botao_corte:hover,
-.div_botao_descolorir:hover{
-  width: 45%; /* Defina a largura desejada para os botões */
-  padding: 10px;
-  background-color: rgba(255, 255, 255, 0.2);
-  border: 3px solid rgba(255, 255, 255, 0.7); /* Adicione uma borda para separar visualmente os botões */
-  box-sizing: border-box;
-  text-align: center; /* Centraliza o texto dentro do contêiner do botão */
-}
-
-Button.botao_corte, Button.botao_descolorir{
-  color: #ffde59;
-  background: transparent;
-  font-family: "Ruslan Display", cursive; 
-  font-size: 18px;
-}
-
-Button.botao_corte:hover, Button.botao_descolorir:hover{
-  background-color: #f8d23c;
-  color: black;
-}
-
-#selecionar-dia, #selecionar_dia{
+#selecionar-dia, #selecionar_dia, #servicos, #horarios{
   color: #ffde59;
   font-family: "Ruslan Display", cursive; 
   font-size: 18px;
