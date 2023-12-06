@@ -91,7 +91,7 @@ body {
 }
 
 .menu-bar.show-menu {
-  height: 80px; /* Mantém a altura quando o menu está ativo */
+  height: 100px; /* Mantém a altura quando o menu está ativo */
 }
 
 .menu-bar.show-menu li {
@@ -227,10 +227,19 @@ Button.botao_corte:hover, Button.botao_descolorir:hover{
   background-color: black;
 }
 
+a.endereco:link,
+a.whatsapp:link,
+a.instagram:link {
+  color: white; /*Cor do site não visitado*/
+  text-decoration: none; 
+}
 
-
-
-
+a.endereco:visited,
+a.whatsapp:visited,
+a.instagram:visited {
+  color: white; /*Cor do site ja visitado*/
+  text-decoration: none;
+}
 
 .App {
   text-align: center;
