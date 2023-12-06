@@ -10,6 +10,8 @@ import TextField from '@mui/material/TextField';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import PinDropIcon from '@mui/icons-material/PinDrop';
+import axios from "axios";
+
 
 export default function CrudUsuarios() {
     const [usuarios, setUsuarios] = useState([]);
@@ -25,6 +27,7 @@ export default function CrudUsuarios() {
     const [servico, setServico] = React.useState('');
     const [horario, setHorario] = React.useState('');
     const currentDay = new Date().toDateString();
+    const [operacao, setOperacao] = useState("");
 
     const url = "https://agenda-omega-liart.vercel.app/usuarios/";
 
@@ -35,6 +38,44 @@ export default function CrudUsuarios() {
             .catch((err) => console.log(err));
     }, [url]);
 
+    function inserirDados() {
+        setOperacao("criarRegistro");
+
+    }
+
+    function gravarDados() {
+        if (nome !== "" && telefone !== "" && horarios) {
+            if (operacao === "criarRegistro") {
+                axios
+                    .post(url, {
+                        nome: nome,
+                        telefone: telefone,
+                        horarios: horarios,
+                    })
+
+                    .then((response) => novoUsuario(response))
+                    .catch((err) => console.log
+                        (err));
+            } 
+        } else {
+            console.log("Preencha os campos");
+
+        }
+
+    }
+
+    function novoUsuario(response) {
+        console.log(response);
+        let { id_usuario, nome, telefone, horarios } = response.data;
+        let obj = {
+            "id": id_usuario, "nome": nome, "telefone": telefone,
+            "horarios": horarios
+        };
+        let users = usuarios;
+        users.push(obj);
+        setUsuarios(users);
+    }
+
     const handleChangeDia = (event) => {
         setDiaSemana(event.target.value);
     };
@@ -44,7 +85,6 @@ export default function CrudUsuarios() {
     const handleChangeHorario = (event) => {
         setHorario(event.target.value);
     };
-    //{item.nome} - {item.telefone} - {item.horarios}
 
     return (
         <div id="page">
@@ -129,14 +169,24 @@ export default function CrudUsuarios() {
                                 <MenuItem id="menu-item" value={"17"}>17:00h</MenuItem>
                             </Select>
                         </FormControl>
+                        <div>
+                            {usuarios ? usuarios.map((item) => {
+                                return (
+                                    <div key={item.id}>
+                                        {item.id_usuario} - {item.nome} - {item.telefone} - {item.horarios}
+                                    </div>
+                                );
+                            })
+                                : false}
+                        </div>
                         <div className="banco-de-dados">
-                            <TextField fullWidth className="nome" label="Nome" variant="filled" />
-                            <TextField className="telefone" label="(DDD) Telefone" variant="filled" />
-                            <br /><Button variant="contained" className="agendar" onClick={() => { }}>Agendar</Button>
+                            <TextField labelId = "nome" fullWidth className="nome" label="Nome" variant="filled" />
+                            <TextField labelId = "telefone" className="telefone" label="(DDD) Telefone" variant="filled" />
+                            <br /><Button variant="contained" className="agendar" onClick={inserirDados}>Agendar</Button>
                         </div>
                     </Box>
                 </Modal>
             </div>
-        </div>
+        </div >
     )
 }
