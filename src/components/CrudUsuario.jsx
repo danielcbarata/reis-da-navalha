@@ -22,8 +22,9 @@ export default function CrudUsuarios() {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const [diaSemana, setDiaSemana] = React.useState('');
-    const currentDay = new Date().getDate();
-    const currentMonth = new Date().getMonth();
+    const [servico, setServico] = React.useState('');
+    const [horario, setHorario] = React.useState('');
+    const currentDay = new Date().toDateString();
 
     const url = "https://agenda-omega-liart.vercel.app/usuarios/";
 
@@ -34,8 +35,14 @@ export default function CrudUsuarios() {
             .catch((err) => console.log(err));
     }, [url]);
 
-    const handleChange = (event) => {
+    const handleChangeDia = (event) => {
         setDiaSemana(event.target.value);
+    };
+    const handleChangeServico = (event) => {
+        setServico(event.target.value);
+    };
+    const handleChangeHorario = (event) => {
+        setHorario(event.target.value);
     };
 
     return (
@@ -53,13 +60,12 @@ export default function CrudUsuarios() {
                 onMouseLeave={() => setShowMenu(false)}
             >
                 <ul>
-                    <li><a className='endereco' href="https://www.google.com/maps/place/Barbearia+Reis+da+Navalha/@-19.5144816,-42.6319578,17z/data=!3m1!4b1!4m6!3m5!1s0xa55790d47c44d5:0x4f4794979a609191!8m2!3d-19.5144816!4d-42.6293829!16s%2Fg%2F11jvk3v1f8?entry=ttu"><PinDropIcon />ENDEREÇO</a></li>
-                    <li><a className='whatsapp' href='https://api.whatsapp.com/send/?phone=553195922625&text&type=phone_number&app_absent=0'><WhatsAppIcon />WHATSAPP</a></li>
-                    <li><a className='instagram' href="https://www.instagram.com/reisdanavalha_/"><InstagramIcon />INSTAGRAM</a></li>
+                    <li><a className='endereco' href="https://www.google.com/maps/place/Barbearia+Reis+da+Navalha/@-19.5144816,-42.6319578,17z/data=!3m1!4b1!4m6!3m5!1s0xa55790d47c44d5:0x4f4794979a609191!8m2!3d-19.5144816!4d-42.6293829!16s%2Fg%2F11jvk3v1f8?entry=ttu"><PinDropIcon /> ENDEREÇO</a></li>
+                    <li><a className='whatsapp' href='https://api.whatsapp.com/send/?phone=553195922625&text&type=phone_number&app_absent=0'><WhatsAppIcon /> 3195922625</a></li>
+                    <li><a className='instagram' href="https://www.instagram.com/reisdanavalha_/"><InstagramIcon /> @reisdanavalha</a></li>
                 </ul>
             </div>
             <div id="menu-sobre" className="menu-sobre">
-                {/* Conteúdo do menu suspenso */}
                 {usuarios ? usuarios.map((item) => {
                     return (
                         <div key={item.id_usuario}>
@@ -83,35 +89,54 @@ export default function CrudUsuarios() {
                         <h1 className="marcar-horario">AGENDE SEU HORÁRIO</h1>
                         <FormControl>
                             <InputLabel id="selecionar-dia">Selecione um dia</InputLabel>
-                            <Select 
+                            <Select
                                 labelId="selecionar-dia"
                                 id="selecionar_dia"
                                 value={diaSemana}
                                 label="Dia da Semana"
-                                onChange={handleChange}
+                                onChange={handleChangeDia}
                             >
-                                <MenuItem id="menu-item" value={"segunda"}>Segunda {currentDay}/{currentMonth + 1}</MenuItem>
-                                <MenuItem id="menu-item" value={"terca"}>Terça {currentDay + 1}/{currentMonth + 1}</MenuItem>
-                                <MenuItem id="menu-item" value={"quarta"}>Quarta {currentDay + 2}/{currentMonth + 1}</MenuItem>
-                                <MenuItem id="menu-item" value={"quinta"}>Quinta {currentDay + 3}/{currentMonth + 1}</MenuItem>
-                                <MenuItem id="menu-item" value={"sexta"}>Sexta {currentDay + 4}/{currentMonth + 1}</MenuItem>
-                                <MenuItem id="menu-item" value={"sabado"}>Sábado {currentDay + 5}/{currentMonth + 1}</MenuItem>
+                                <MenuItem id="menu-item" value={"segunda"}>Segunda {currentDay}</MenuItem>
+                                <MenuItem id="menu-item" value={"terca"}>Terça {currentDay}</MenuItem>
+                                <MenuItem id="menu-item" value={"quarta"}>Quarta {currentDay}</MenuItem>
+                                <MenuItem id="menu-item" value={"quinta"}>Quinta {currentDay}</MenuItem>
+                                <MenuItem id="menu-item" value={"sexta"}>Sexta {currentDay}</MenuItem>
+                                <MenuItem id="menu-item" value={"sabado"}>Sábado {currentDay}</MenuItem>
                             </Select>
                         </FormControl>
-                        <div className='botoes-serviços'>
-                            <div className="div_botao_corte">
-                                <p>Corte</p>
-                                <p>Duração: 1 hora</p>
-                                <p>Preço: R$ 30,00</p>
-                                <Button variant="contained" className="botao_corte" onClick={() => { }}>Selecionar Horário</Button>
-                            </div>
-                            <div className="div_botao_descolorir">
-                                <p>Descolorir</p>
-                                <p>Duração: 1 hora</p>
-                                <p>Preço: R$ 40,00</p>
-                                <Button variant="contained" className="botao_descolorir" onClick={() => { }}>Selecionar Horário</Button>
-                            </div>
-                        </div>
+                        <FormControl>
+                            <InputLabel id="servicos">Selecione um dia</InputLabel>
+                            <Select
+                                labelId="servicos"
+                                id="servicos"
+                                value={servico}
+                                label="Serviços"
+                                onChange={handleChangeServico}
+                            >
+                                <MenuItem id="menu-item" value={"corte"}>Corte R$ 30,00</MenuItem>
+                                <MenuItem id="menu-item" value={"corte_barba"}>Corte + Barba R$ 35,00</MenuItem>
+                                <MenuItem id="menu-item" value={"pe_barba"}>Pé + Barba R$ 10,00</MenuItem>
+                                <MenuItem id="menu-item" value={"descolorir"}>Descolorir R$ 40,00</MenuItem>
+                            </Select>
+                        </FormControl>
+                        <FormControl>
+                            <InputLabel id="horarios">Selecione um dia</InputLabel>
+                            <Select
+                                labelId="horarios"
+                                id="horarios"
+                                value={horario}
+                                label="Horários"
+                                onChange={handleChangeHorario}
+                            >
+                                <MenuItem id="menu-item" value={"10"}>10:00h</MenuItem>
+                                <MenuItem id="menu-item" value={"11"}>11:00h</MenuItem>
+                                <MenuItem id="menu-item" value={"12"}>12:00h</MenuItem>
+                                <MenuItem id="menu-item" value={"14"}>14:00h</MenuItem>
+                                <MenuItem id="menu-item" value={"15"}>15:00h</MenuItem>
+                                <MenuItem id="menu-item" value={"16"}>16:00h</MenuItem>
+                                <MenuItem id="menu-item" value={"17"}>17:00h</MenuItem>
+                            </Select>
+                        </FormControl>
                         <div className="banco-de-dados">
                             <TextField fullWidth className="nome" label="Nome" variant="filled" />
                             <TextField className="telefone" label="(DDD) Telefone" variant="filled" />
