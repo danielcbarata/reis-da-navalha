@@ -27,48 +27,6 @@ export default function CrudUsuarios() {
     const currentDay = new Date().toDateString();
     const [operacao, setOperacao] = useState("");
 
-    const url = "https://agenda-omega-liart.vercel.app/usuarios/";
-
-    useEffect(() => {
-        fetch(url)
-            .then((respFetch) => respFetch.json())
-            .then((respJson) => setUsuarios(respJson))
-            .catch((err) => console.log(err));
-    }, [url]);
-
-    function gravarDados() {
-        if (nome !== "" && telefone !== "" && horarios) {
-            if (operacao === "criarRegistro") {
-                axios
-                    .post(url, {
-                        nome: nome,
-                        telefone: telefone,
-                        horarios: horarios,
-                    })
-
-                    .then((response) => novoUsuario(response))
-                    .catch((err) => console.log
-                        (err));
-            } 
-        } else {
-            console.log("Preencha os campos");
-
-        }
-
-    }
-
-    function novoUsuario(response) {
-        console.log(response);
-        let { id_usuario, nome, telefone, horarios } = response.data;
-        let obj = {
-            "id": id_usuario, "nome": nome, "telefone": telefone,
-            "horarios": horarios
-        };
-        let users = usuarios;
-        users.push(obj);
-        setUsuarios(users);
-    }
-
     const handleChangeDia = (event) => {
         setDiaSemana(event.target.value);
     };
@@ -85,6 +43,50 @@ export default function CrudUsuarios() {
     };
     const handleClose = () => setOpen(false);
 
+    const url = "https://agenda-omega-liart.vercel.app/usuarios/";
+
+    useEffect(() => {
+        fetch(url)
+            .then((respFetch) => respFetch.json())
+            .then((respJson) => setUsuarios(respJson))
+            .catch((err) => console.log(err));
+    }, [url]);
+
+    function limparDados() {
+        setId_Usuario("");
+        setNome("");
+        setTelefone("");
+        setHorarios("");
+    }
+
+    function novoUsuario(response) {
+        console.log(response);
+        let { id_usuario, nome, telefone, horarios } = response.data;
+        let obj = {"id": id_usuario, "nome": nome, "telefone": telefone, "horarios": horarios};
+        let users = usuarios;
+        users.push(obj);
+        setUsuarios(users);
+        limparDados("");
+    }
+
+    function gravarDados() {
+        if (nome !== "" && telefone !== "" && horarios) {
+            if (operacao === "criarRegistro") {
+                axios
+                    .post(url, {
+                        nome: nome,
+                        telefone: telefone,
+                        horarios: horarios,
+                    })
+                    .then((response) => novoUsuario(response))
+                    .catch((err) => console.log
+                        (err));
+            }
+        } else {
+            console.log("Preencha os campos");
+        }
+    }
+
     return (
         <div id="page">
             <div id="header">
@@ -100,9 +102,9 @@ export default function CrudUsuarios() {
                 onMouseLeave={() => setShowMenu(false)}
             >
                 <ul>
-                    <li><a className='endereco' href="https://www.google.com/maps/place/Barbearia+Reis+da+Navalha/@-19.5144816,-42.6319578,17z/data=!3m1!4b1!4m6!3m5!1s0xa55790d47c44d5:0x4f4794979a609191!8m2!3d-19.5144816!4d-42.6293829!16s%2Fg%2F11jvk3v1f8?entry=ttu"><PinDropIcon /> ENDEREÇO</a></li>
-                    <li><a className='whatsapp' href='https://api.whatsapp.com/send/?phone=553195922625&text&type=phone_number&app_absent=0'><WhatsAppIcon /> 3195922625</a></li>
-                    <li><a className='instagram' href="https://www.instagram.com/reisdanavalha_/"><InstagramIcon /> @reisdanavalha</a></li>
+                    <li><a target="_blank" className='endereco' href="https://www.google.com/maps/place/Barbearia+Reis+da+Navalha/@-19.5144816,-42.6319578,17z/data=!3m1!4b1!4m6!3m5!1s0xa55790d47c44d5:0x4f4794979a609191!8m2!3d-19.5144816!4d-42.6293829!16s%2Fg%2F11jvk3v1f8?entry=ttu"><PinDropIcon /> ENDEREÇO</a></li>
+                    <li><a target="_blank" className='whatsapp' href='https://api.whatsapp.com/send/?phone=553195922625&text&type=phone_number&app_absent=0'><WhatsAppIcon /> 3195922625</a></li>
+                    <li><a target="_blank" className='instagram' href="https://www.instagram.com/reisdanavalha_/"><InstagramIcon /> @reisdanavalha</a></li>
                 </ul>
             </div>
             <div id="body">
@@ -169,8 +171,8 @@ export default function CrudUsuarios() {
                             </Select>
                         </FormControl>
                         <div className="banco-de-dados">
-                            <input label="nome" className="nome" value={nome} onChange={(e) => { setNome (e.target.value); }}/>
-                            <input label="DDD telefone" className="telefone" value={telefone} onChange={(e) => { setTelefone (e.target.value); }}/>
+                            <input label="nome" className="nome" value={nome} onChange={(e) => { setNome(e.target.value); }} />
+                            <input label="DDD telefone" className="telefone" value={telefone} onChange={(e) => { setTelefone(e.target.value); }} />
                             <br /><Button variant="contained" className="agendar" onClick={gravarDados}>Agendar</Button>
                         </div>
                     </Box>
