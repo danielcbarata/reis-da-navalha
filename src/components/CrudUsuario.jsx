@@ -44,6 +44,7 @@ export default function CrudUsuarios() {
     const handleChangeHorario = (event) => {
         setHorario(event.target.value);
     };
+    //{item.nome} - {item.telefone} - {item.horarios}
 
     return (
         <div id="page">
@@ -64,15 +65,6 @@ export default function CrudUsuarios() {
                     <li><a className='whatsapp' href='https://api.whatsapp.com/send/?phone=553195922625&text&type=phone_number&app_absent=0'><WhatsAppIcon /> 3195922625</a></li>
                     <li><a className='instagram' href="https://www.instagram.com/reisdanavalha_/"><InstagramIcon /> @reisdanavalha</a></li>
                 </ul>
-            </div>
-            <div id="menu-sobre" className="menu-sobre">
-                {usuarios ? usuarios.map((item) => {
-                    return (
-                        <div key={item.id_usuario}>
-                            {item.id_usuario} - {item.nome} - {item.telefone} - {item.horarios}
-                        </div>
-                    );
-                }) : null}
             </div>
             <div id="body">
                 <div className="agendamento">
@@ -105,10 +97,10 @@ export default function CrudUsuarios() {
                             </Select>
                         </FormControl>
                         <FormControl>
-                            <InputLabel id="servicos">Selecione um dia</InputLabel>
+                            <InputLabel id="servicos">Selecione um serviço</InputLabel>
                             <Select
                                 labelId="servicos"
-                                id="servicos"
+                                id="servicosid"
                                 value={servico}
                                 label="Serviços"
                                 onChange={handleChangeServico}
@@ -120,10 +112,10 @@ export default function CrudUsuarios() {
                             </Select>
                         </FormControl>
                         <FormControl>
-                            <InputLabel id="horarios">Selecione um dia</InputLabel>
+                            <InputLabel id="horarios">Selecione um horário</InputLabel>/InputLabel>
                             <Select
                                 labelId="horarios"
-                                id="horarios"
+                                id="horariosid"
                                 value={horario}
                                 label="Horários"
                                 onChange={handleChangeHorario}
