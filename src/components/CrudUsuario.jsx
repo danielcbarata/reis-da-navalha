@@ -152,7 +152,7 @@ export default function CrudUsuarios() {
                             </Select>
                         </FormControl>
                         <FormControl>
-                            <InputLabel id="horarios">Selecione um horário</InputLabel>/InputLabel>
+                            <InputLabel id="horarios">Selecione um horário</InputLabel>
                             <Select
                                 labelId="horarios"
                                 id="horariosid"
@@ -180,9 +180,9 @@ export default function CrudUsuarios() {
                                 : false}
                         </div>
                         <div className="banco-de-dados">
-                            <TextField labelId = "nome" fullWidth className="nome" label="Nome" variant="filled" />
-                            <TextField labelId = "telefone" className="telefone" label="(DDD) Telefone" variant="filled" />
-                            <br /><Button variant="contained" className="agendar" onClick={inserirDados}>Agendar</Button>
+                            <input className="nome" value={nome} onChange={(e) => { setNome (e.target.value); }}/>
+                            <input className="telefone" value={telefone} onChange={(e) => { setTelefone (e.target.value); }}/>
+                            <br /><Button variant="contained" className="agendar" onClick={gravarDados}>Agendar</Button>
                         </div>
                     </Box>
                 </Modal>
