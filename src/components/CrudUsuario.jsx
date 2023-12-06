@@ -21,8 +21,6 @@ export default function CrudUsuarios() {
     const [horarios, setHorarios] = useState("");
     const [showMenu, setShowMenu] = useState(false);
     const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
     const [diaSemana, setDiaSemana] = React.useState('');
     const [servico, setServico] = React.useState('');
     const [horario, setHorario] = React.useState('');
@@ -37,11 +35,6 @@ export default function CrudUsuarios() {
             .then((respJson) => setUsuarios(respJson))
             .catch((err) => console.log(err));
     }, [url]);
-
-    function inserirDados() {
-        setOperacao("criarRegistro");
-
-    }
 
     function gravarDados() {
         if (nome !== "" && telefone !== "" && horarios) {
@@ -85,6 +78,12 @@ export default function CrudUsuarios() {
     const handleChangeHorario = (event) => {
         setHorario(event.target.value);
     };
+
+    const handleOpen = () => {
+        setOpen(true);
+        setOperacao("criarRegistro");
+    };
+    const handleClose = () => setOpen(false);
 
     return (
         <div id="page">
@@ -169,19 +168,9 @@ export default function CrudUsuarios() {
                                 <MenuItem id="menu-item" value={"17"}>17:00h</MenuItem>
                             </Select>
                         </FormControl>
-                        <div>
-                            {usuarios ? usuarios.map((item) => {
-                                return (
-                                    <div key={item.id}>
-                                        {item.id_usuario} - {item.nome} - {item.telefone} - {item.horarios}
-                                    </div>
-                                );
-                            })
-                                : false}
-                        </div>
                         <div className="banco-de-dados">
-                            <input className="nome" value={nome} onChange={(e) => { setNome (e.target.value); }}/>
-                            <input className="telefone" value={telefone} onChange={(e) => { setTelefone (e.target.value); }}/>
+                            <input label="nome" className="nome" value={nome} onChange={(e) => { setNome (e.target.value); }}/>
+                            <input label="DDD telefone" className="telefone" value={telefone} onChange={(e) => { setTelefone (e.target.value); }}/>
                             <br /><Button variant="contained" className="agendar" onClick={gravarDados}>Agendar</Button>
                         </div>
                     </Box>
