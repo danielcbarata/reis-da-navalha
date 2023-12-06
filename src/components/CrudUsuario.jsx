@@ -23,7 +23,6 @@ export default function CrudUsuarios() {
     const [open, setOpen] = React.useState(false);
     const [diaSemana, setDiaSemana] = React.useState('');
     const [servico, setServico] = React.useState('');
-    const [horario, setHorario] = React.useState('');
     const currentDay = new Date().toDateString();
     const [operacao, setOperacao] = useState("");
 
@@ -34,7 +33,7 @@ export default function CrudUsuarios() {
         setServico(event.target.value);
     };
     const handleChangeHorario = (event) => {
-        setHorario(event.target.value);
+        setHorarios(event.target.value);
     };
 
     const handleOpen = () => {
@@ -70,7 +69,7 @@ export default function CrudUsuarios() {
     }
 
     function gravarDados() {
-        if (nome !== "" && telefone !== "" && horarios) {
+        if (nome !== "" && telefone !== "" && horarios !== "") {
             if (operacao === "criarRegistro") {
                 axios
                     .post(url, {
@@ -78,7 +77,10 @@ export default function CrudUsuarios() {
                         telefone: telefone,
                         horarios: horarios,
                     })
-                    .then((response) => novoUsuario(response))
+                    .then((response) => {
+                        novoUsuario(response);
+                        handleClose();
+                    })
                     .catch((err) => console.log
                         (err));
             }
@@ -157,7 +159,7 @@ export default function CrudUsuarios() {
                             <Select
                                 labelId="horarios"
                                 id="horariosid"
-                                value={horario}
+                                value={horarios}
                                 label="Horários"
                                 onChange={handleChangeHorario}
                             >
