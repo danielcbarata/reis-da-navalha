@@ -102,7 +102,7 @@ export default function CrudUsuarios() {
     function gravarDados() {
         if (nome !== "" && telefone !== "" && horarios !== "" && servico !== "") {
             if (operacao === "criarRegistro") {
-                const nextValidDate = getNextValidDate(diaSemana, +horarios);
+                const nextValidDate = getNextValidDate(diaSemana, new Date().getHours()).toDateString() + " " + horarios;
                 axios
                     .post(url, {
                         nome: nome,
@@ -118,7 +118,7 @@ export default function CrudUsuarios() {
                         (err));
             }
         } else {
-            handlePopUpOpen
+            window.open("Preencha todos os campos");
         }
     }
 
@@ -166,12 +166,12 @@ export default function CrudUsuarios() {
                                 onChange={handleChangeDia}
                                 input={<ReiInput />}
                             >
-                                <MenuItem id="menu-item" value={"segunda"}>Segunda {getNextValidDate("segunda", new Date().getHours()).toDateString()}</MenuItem>
-                                <MenuItem id="menu-item" value={"terca"}>Terça {getNextValidDate("terca", new Date().getHours()).toDateString()}</MenuItem>
-                                <MenuItem id="menu-item" value={"quarta"}>Quarta {getNextValidDate("quarta", new Date().getHours()).toDateString()}</MenuItem>
-                                <MenuItem id="menu-item" value={"quinta"}>Quinta {getNextValidDate("quinta", new Date().getHours()).toDateString()}</MenuItem>
-                                <MenuItem id="menu-item" value={"sexta"}>Sexta {getNextValidDate("sexta", new Date().getHours()).toDateString()}</MenuItem>
-                                <MenuItem id="menu-item" value={"sabado"}>Sábado {getNextValidDate("sabado", new Date().getHours()).toDateString()}</MenuItem>
+                                <MenuItem id="menu-item" value={"terca"}>Segunda {getNextValidDate("terca", new Date().getHours()).toDateString()}</MenuItem>
+                                <MenuItem id="menu-item" value={"quarta"}>Terça {getNextValidDate("quarta", new Date().getHours()).toDateString()}</MenuItem>
+                                <MenuItem id="menu-item" value={"quinta"}>Quarta {getNextValidDate("quinta", new Date().getHours()).toDateString()}</MenuItem>
+                                <MenuItem id="menu-item" value={"sexta"}>Quinta {getNextValidDate("sexta", new Date().getHours()).toDateString()}</MenuItem>
+                                <MenuItem id="menu-item" value={"sabado"}>Sexta {getNextValidDate("sabado", new Date().getHours()).toDateString()}</MenuItem>
+                                <MenuItem id="menu-item" value={"domingo"}>Sábado {getNextValidDate("domingo", new Date().getHours()).toDateString()}</MenuItem>
                             </Select>
                         </FormControl>
                         <FormControl>
@@ -200,13 +200,13 @@ export default function CrudUsuarios() {
                                 onChange={handleChangeHorario}
                                 input={<ReiInput />}
                             >
-                                <MenuItem id="menu-item" value={"10"}>10:00h</MenuItem>
-                                <MenuItem id="menu-item" value={"11"}>11:00h</MenuItem>
-                                <MenuItem id="menu-item" value={"12"}>12:00h</MenuItem>
-                                <MenuItem id="menu-item" value={"14"}>14:00h</MenuItem>
-                                <MenuItem id="menu-item" value={"15"}>15:00h</MenuItem>
-                                <MenuItem id="menu-item" value={"16"}>16:00h</MenuItem>
-                                <MenuItem id="menu-item" value={"17"}>17:00h</MenuItem>
+                                <MenuItem id="menu-item" value={"10:00"}>10:00h</MenuItem>
+                                <MenuItem id="menu-item" value={"11:00"}>11:00h</MenuItem>
+                                <MenuItem id="menu-item" value={"12:00"}>12:00h</MenuItem>
+                                <MenuItem id="menu-item" value={"14:00"}>14:00h</MenuItem>
+                                <MenuItem id="menu-item" value={"15:00"}>15:00h</MenuItem>
+                                <MenuItem id="menu-item" value={"16:00"}>16:00h</MenuItem>
+                                <MenuItem id="menu-item" value={"17:00"}>17:00h</MenuItem>
                             </Select>
                         </FormControl>
                         <div className="banco-de-dados">
@@ -221,22 +221,6 @@ export default function CrudUsuarios() {
                             <br /><Button variant="contained" className="agendar" onClick={gravarDados}>Agendar</Button>
                         </div>
                     </Box>
-                    <React.Fragment>
-                        <Modal
-                            open={popupOpen}
-                            onClose={handlePopUpClose}
-                            aria-labelledby="child-modal-title"
-                            aria-describedby="child-modal-description"
-                        >
-                            <Box sx={{ width: 200 }}>
-                                <Button variant="contained" className="fechar_janela" onClick={handlePopUpClose}>X</Button>
-                                <h2 id="child-modal-title">Text in a child modal</h2>
-                                <p id="child-modal-description">
-                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                                </p>
-                            </Box>
-                        </Modal>
-                    </React.Fragment>
                 </Modal>
             </div>
         </div >
