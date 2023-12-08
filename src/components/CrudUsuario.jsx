@@ -115,7 +115,7 @@ export default function CrudUsuarios() {
                         (err));
             }
         } else {
-            console.log("Preencha os campos");
+            window.open("Preencha os campos");
         }
     }
 
