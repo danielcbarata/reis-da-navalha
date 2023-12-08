@@ -100,12 +100,13 @@ export default function CrudUsuarios() {
         if (nome !== "" && telefone !== "" && horarios !== "" && servico !== "") {
             if (operacao === "criarRegistro") {
                 const nextValidDate = getNextValidDate(diaSemana, +horarios);
+                const servicosbd = servico;
                 axios
                     .post(url, {
                         nome: nome,
                         telefone: telefone,
                         horarios: nextValidDate,
-                        servico: servico,
+                        servico: servicosbd,
                     })
                     .then((response) => {
                         novoUsuario(response);
@@ -115,7 +116,7 @@ export default function CrudUsuarios() {
                         (err));
             }
         } else {
-            console.warn("Preencha os campos");
+            console.log("Preencha os campos");
         }
     }
 
