@@ -88,8 +88,8 @@ export default function CrudUsuarios() {
 
     function novoUsuario(response) {
         console.log(response);
-        let { id_usuario, nome, telefone, horarios } = response.data;
-        let obj = {"id": id_usuario, "nome": nome, "telefone": telefone, "horarios": horarios};
+        let { id_usuario, nome, telefone, horarios, servico } = response.data;
+        let obj = {"id": id_usuario, "nome": nome, "telefone": telefone, "horarios": horarios, "servico": servico};
         let users = usuarios;
         users.push(obj);
         setUsuarios(users);
@@ -97,7 +97,7 @@ export default function CrudUsuarios() {
     }
 
     function gravarDados() {
-        if (nome !== "" && telefone !== "" && horarios !== "") {
+        if (nome !== "" && telefone !== "" && horarios !== "" && servico !== "") {
             if (operacao === "criarRegistro") {
                 const nextValidDate = getNextValidDate(diaSemana, +horarios);
                 axios
@@ -105,6 +105,7 @@ export default function CrudUsuarios() {
                         nome: nome,
                         telefone: telefone,
                         horarios: nextValidDate,
+                        servico: servico,
                     })
                     .then((response) => {
                         novoUsuario(response);
@@ -114,7 +115,7 @@ export default function CrudUsuarios() {
                         (err));
             }
         } else {
-            console.log("Preencha os campos");
+            console.warn("Preencha os campos");
         }
     }
 
