@@ -23,22 +23,22 @@ const ReiInput = styled(InputBase)(({ theme }) => ({
         color: '#ffde59',
     },
     '& .MuiInputBase-input': {
-      borderRadius: 4,
-      position: 'relative',
-      backgroundColor: 'transparent',
-      border: '1px solid #ced4da',
-      color: '#ffde59',
-      borderColor: '#ffde59',
-      fontSize: 16,
-      padding: '10px 26px 10px 12px',
-      fontFamily: [
-        '"Ruslan Display" , cursive',
-      ].join(','),
-      '&:focus': {
         borderRadius: 4,
+        position: 'relative',
+        backgroundColor: 'transparent',
+        border: '1px solid #ced4da',
+        color: '#ffde59',
         borderColor: '#ffde59',
-        boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
-      },
+        fontSize: 16,
+        padding: '10px 26px 10px 12px',
+        fontFamily: [
+            '"Ruslan Display" , cursive',
+        ].join(','),
+        '&:focus': {
+            borderRadius: 4,
+            borderColor: '#ffde59',
+            boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
+        },
     },
 }));
 
@@ -50,6 +50,7 @@ export default function CrudUsuarios() {
     const [horarios, setHorarios] = useState("");
     const [showMenu, setShowMenu] = useState(false);
     const [open, setOpen] = React.useState(false);
+    const [popupOpen, setPopUpOpen] = React.useState(false);
     const [diaSemana, setDiaSemana] = React.useState('');
     const [servico, setServico] = React.useState('');
     const [operacao, setOperacao] = useState("");
@@ -69,6 +70,8 @@ export default function CrudUsuarios() {
         setOperacao("criarRegistro");
     };
     const handleClose = () => setOpen(false);
+    const handlePopUpOpen = () => setOpen(true);
+    const handlePopUpClose = () => setOpen(false);
 
     const url = "https://agenda-omega-liart.vercel.app/usuarios/";
 
@@ -89,7 +92,7 @@ export default function CrudUsuarios() {
     function novoUsuario(response) {
         console.log(response);
         let { id_usuario, nome, telefone, horarios, servico } = response.data;
-        let obj = {"id": id_usuario, "nome": nome, "telefone": telefone, "horarios": horarios, "servico": servico};
+        let obj = { "id": id_usuario, "nome": nome, "telefone": telefone, "horarios": horarios, "servico": servico };
         let users = usuarios;
         users.push(obj);
         setUsuarios(users);
@@ -115,11 +118,11 @@ export default function CrudUsuarios() {
                         (err));
             }
         } else {
-            window.open("Preencha os campos");
+            handlePopUpOpen
         }
     }
 
-   
+
     return (
         <div id="page">
             <div id="header">
@@ -218,6 +221,11 @@ export default function CrudUsuarios() {
                             <br /><Button variant="contained" className="agendar" onClick={gravarDados}>Agendar</Button>
                         </div>
                     </Box>
+                    <Modal open={popupOpen} onClose={handlePopUpClose}>
+                        <Box>
+                            <Button variant="contained" className="fechar_janela" onClick={handlePopUpClose}>X</Button>
+                        </Box>
+                    </Modal>
                 </Modal>
             </div>
         </div >
