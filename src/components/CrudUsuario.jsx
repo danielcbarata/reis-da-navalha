@@ -70,7 +70,7 @@ export default function CrudUsuarios() {
         setOperacao("criarRegistro");
     };
     const handleClose = () => setOpen(false);
-    const handlePopUpOpen = () => setOpen(true);
+    const handlePopUpOpen = () => setPopUpOpen(true);
     const handlePopUpClose = () => setOpen(false);
 
     const url = "https://agenda-omega-liart.vercel.app/usuarios/";
@@ -150,8 +150,8 @@ export default function CrudUsuarios() {
                 <Modal
                     open={open}
                     onClose={handleClose}
-                    aria-labelledby="modal-modal-title"
-                    aria-describedby="modal-modal-description"
+                    aria-labelledby="parent-modal-title"
+                    aria-describedby="parent-modal-description"
                 >
                     <Box className="modal-box">
                         <Button variant="contained" className="fechar_janela" onClick={handleClose}>X</Button>
@@ -222,9 +222,18 @@ export default function CrudUsuarios() {
                         </div>
                     </Box>
                     <React.Fragment>
-                        <Modal open={popupOpen} onClose={handlePopUpClose}>
-                            <Box sx={{ ...style, width: 200 }}>
+                        <Modal
+                            open={popupOpen}
+                            onClose={handlePopUpClose}
+                            aria-labelledby="child-modal-title"
+                            aria-describedby="child-modal-description"
+                        >
+                            <Box sx={{ width: 200 }}>
                                 <Button variant="contained" className="fechar_janela" onClick={handlePopUpClose}>X</Button>
+                                <h2 id="child-modal-title">Text in a child modal</h2>
+                                <p id="child-modal-description">
+                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                                </p>
                             </Box>
                         </Modal>
                     </React.Fragment>
