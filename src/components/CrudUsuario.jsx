@@ -221,11 +221,13 @@ export default function CrudUsuarios() {
                             <br /><Button variant="contained" className="agendar" onClick={gravarDados}>Agendar</Button>
                         </div>
                     </Box>
-                    <Modal open={popupOpen} onClose={handlePopUpClose}>
-                        <Box>
-                            <Button variant="contained" className="fechar_janela" onClick={handlePopUpClose}>X</Button>
-                        </Box>
-                    </Modal>
+                    <React.Fragment>
+                        <Modal open={popupOpen} onClose={handlePopUpClose}>
+                            <Box sx={{ ...style, width: 200 }}>
+                                <Button variant="contained" className="fechar_janela" onClick={handlePopUpClose}>X</Button>
+                            </Box>
+                        </Modal>
+                    </React.Fragment>
                 </Modal>
             </div>
         </div >
